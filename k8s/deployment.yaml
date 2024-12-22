@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubernetes-cd-pipeline
+  labels:
+    app: kubernetes-cd-pipeline
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: kubernetes-cd-pipeline
+  template:
+    metadata:
+      labels:
+        app: kubernetes-cd-pipeline
+    spec:
+      containers:
+        - name: kubernetes-cd-pipeline
+          image: edilandosaturnino/kubernetes-cd-pipeline:latest
+          ports:
+            - containerPort: 80
